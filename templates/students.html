@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students</title>
+    <link rel="stylesheet"
+href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<a href="/" class="home-btn">
+🏠 Home
+</a>
+
+<h2 class="glow">
+📊 Student Performance Dashboard
+</h2>
+
+<table border="1">
+
+<tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Roll</th>
+    <th>Math</th>
+    <th>Science</th>
+    <th>English</th>
+    <th>Average</th>
+    <th>Performance</th>
+</tr>
+
+{% for student in students %}
+
+<tr>
+
+<td>{{ student[0] }}</td>
+<td>{{ student[1] }}</td>
+<td>{{ student[2] }}</td>
+<td>{{ student[3] }}</td>
+<td>{{ student[4] }}</td>
+<td>{{ student[5] }}</td>
+
+<td>
+{% if student[3] and student[4] and student[5] %}
+{{ ((student[3] + student[4] + student[5]) / 3)|round(2) }}
+{% endif %}
+</td>
+
+<td>
+
+{% if student[3] and student[4] and student[5] %}
+
+{% set avg = ((student[3] + student[4] + student[5]) / 3) %}
+
+{% if avg >= 90 %}
+🏆 Excellent
+
+{% elif avg >= 75 %}
+⭐ Very Good
+
+{% elif avg >= 60 %}
+👍 Good
+
+{% else %}
+⚠ Needs Improvement
+
+{% endif %}
+
+{% endif %}
+
+</td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+</body>
+</html>

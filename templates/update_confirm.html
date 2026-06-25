@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Update Student</title>
+
+    <link rel="stylesheet"
+    href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h2>⚠ Roll Number Already Exists</h2>
+
+<p style="text-align:center;margin:20px;">
+Do you want to update this student?
+</p>
+
+<center>
+
+<form action="/update_student" method="POST">
+
+<input type="hidden" name="name" value="{{ name }}">
+<input type="hidden" name="roll" value="{{ roll }}">
+
+<button type="submit">
+✅ Yes, Update
+</button>
+
+</form>
+
+<br>
+
+<a href="/" class="home-btn">
+❌ No, Go Back
+</a>
+
+</center>
+
+</div>
+
+</div>
+
+</body>
+</html>
